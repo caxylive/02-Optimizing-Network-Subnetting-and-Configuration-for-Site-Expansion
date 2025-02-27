@@ -8,7 +8,7 @@ In this project, we aim to design and configure a small-scale network with multi
 
 ## Network Topology (Pre-Subnetting / After Project_01)
 The initial network topology in Project_01 consisted of two primary sites, Site 1 and Site 2, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments.
-![Figure 1: Network Topology](/screenshot/project02-network-topology-initial.png)
+![Figure 1: Network Topology](/screenshot/project_02-network-topology-initial.png)
 
 ## Objectives
 1. Break up the ```192.168.1.64 /26``` subnet to support as many subnets as possible with at least 8 hosts each.
@@ -98,23 +98,27 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 ![Figure 10: S3 Config - Vlan1](/screenshot/S3-config-vlan1.png)
 
 ### Manually Configuring IPs for PCs
-| PC       | IP Address     | Subnet Mask        | Default Gateway |
-|----------|----------------|--------------------|-----------------|
-| **PC6**  | 192.168.1.65   | 255.255.255.240    | 192.168.1.78    |
-| **PC7**  | 192.168.1.66   | 255.255.255.240    | 192.168.1.78    |
-| **PC8**  | 192.168.1.67   | 255.255.255.240    | 192.168.1.78    |
+| PC       | IP Address     | Subnet Mask     | Default Gateway |
+|----------|----------------|-----------------|-----------------|
+| **PC6**  | 192.168.1.65   | 255.255.255.240 | 192.168.1.78    |
+| **PC7**  | 192.168.1.66   | 255.255.255.240 | 192.168.1.78    |
+| **PC8**  | 192.168.1.67   | 255.255.255.240 | 192.168.1.78    |
 
 ## Verification and Testing
 To verify the network configuration, we conducted several tests:
 
 ### Ping Tests:
 - PCs were able to ping their default gateways and other devices within their subnet.
-- PCs successfully pinged external IP addresses (e.g., 8.8.8.8).
-![]()
+- PCs successfully pinged external IP addresses (e.g., Google DNS [8.8.8.8], facebook.com, cisco.com).
+![Figure 11: Pinging External Sites](/screenshot/PC6-ipconfig-ping.png)
+- Pinging Internal Devices from Site_01 and Site_02 </br>
+![Figure 12: Pinging Internal Devices](/screenshot/PC6-ping.png)
 
 ### Browser Tests:
-- PCs accessed websites like [cisco.com](cisco.com) and [facebook.com](facebook.com) to confirm internet connectivity.
-![]()
+- PCs accessed websites like [cisco.com](cisco.com)
+![Figure 13: Visiting Cisco's Website](/screenshot/PC6-cisco.png)
+- And [facebook.com](facebook.com) to confirm internet connectivity.
+![Figure 14: Visiting Facebook's Website](/screenshot/PC6-facebook.png)
 
 ## Results
 The ```192.168.1.64 /26``` subnet was successfully divided into smaller subnets, maximizing the number of subnets with at least 8 hosts each. This approach allowed for efficient IP address allocation and accommodated additional devices within the network.
