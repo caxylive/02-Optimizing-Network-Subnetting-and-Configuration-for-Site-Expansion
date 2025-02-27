@@ -114,6 +114,10 @@ To verify the network configuration, we conducted several tests:
 - Pinging Internal Devices from Site_01 and Site_02 </br>
 ![Figure 12: Pinging Internal Devices](/screenshot/PC6-ping.png)
 
+#### PS:
+- Connectivity tests are not limited to the devices mentioned above.
+- Please test every single device one-by-one.
+
 ### Browser Tests:
 - PCs accessed websites like [cisco.com](cisco.com)
 ![Figure 13: Visiting Cisco's Website](/screenshot/PC6-cisco.png)
