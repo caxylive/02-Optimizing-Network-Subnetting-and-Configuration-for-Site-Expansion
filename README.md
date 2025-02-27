@@ -4,10 +4,10 @@ Contact: [carl.xymon.verdejo@gmail.com](carl.xymon.verdejo@gmail.com)
 
 # Project Overview
 ## Background
-In this project, we aim to design and configure a small-scale network with multiple subnets and internet connectivity using Cisco Packet Tracer. Building upon the previous project (Project_01), we will extend and conserve IP addresses for network expansion in Project_02.
+In this project, we aim to design and configure a small-scale network with multiple subnets and internet connectivity using Cisco Packet Tracer. Building upon the previous project ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)), we will extend and conserve IP addresses for network expansion in Project_02.
 
-## Network Topology (Pre-Subnetting / After Project_01)
-The initial network topology in Project_01 consisted of two primary sites, Site 1 and Site 2, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments.
+## Network Topology (Pre-Subnetting)
+The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)) consisted of two primary sites, Site 1 and Site 2, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments.
 ![Figure 1: Network Topology](/screenshot/project_02-network-topology-initial.png)
 
 ## Objectives
@@ -17,7 +17,6 @@ The initial network topology in Project_01 consisted of two primary sites, Site 
 4. Verify network connectivity and internet access for all PCs.
 
 # Network Design: Subnetting Calculations
-
 ![Table 1: Subnetting Table](/screenshot/project_02-subnetting-table.png)
 
 # Network Design: Network Topology (After Subnetting)
