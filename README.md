@@ -179,6 +179,7 @@ To verify the network configuration, we conducted several tests:
 - Please test every single device one-by-one.
 
 ### Browser Tests:
+- Just type the URL (Uniform Resource Locator) into a browser's address bar.
 - PCs accessed websites like [cisco.com](cisco.com)
 ![Figure 13: Visiting Cisco's Website](/screenshot/PC6-cisco.png)
 - And [facebook.com](facebook.com) to confirm internet connectivity.
