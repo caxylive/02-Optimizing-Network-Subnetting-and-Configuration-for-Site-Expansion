@@ -103,7 +103,7 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 | **PC7**  | 192.168.1.66   | 255.255.255.240 | 192.168.1.78    |
 | **PC8**  | 192.168.1.67   | 255.255.255.240 | 192.168.1.78    |
 
-### PC6 Example : Windows
+### PC6 Example (if using Windows cmd / PowerShell):
 - Please note that cmd in Packet Tracer is limited and does not reflect the real-world cmd commands
 - Also the GUI config in Packet Tracer is very different from the real-worl GUI especially in Windows 11, Linux, and macOSX
 - Refer to each Operating System's way of configuring the Network Interface
@@ -111,10 +111,12 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 ``` cmd
 netsh interface ipv4 set address name="FastEthernet0" static 192.168.1.65 255.255.255.240
 netsh interface ipv4 set address name="FastEthernet0" gateway=192.168.1.78
-netsh interface ipv4 set dns name="FastEthernet0" static <DNS Server IP>
+netsh interface ipv4 set dns name="FastEthernet0" static 8.8.8.8
 ```
+#### Note:
+-```8.8.8.8``` is Google's Domain Name System server. Another one is ```8.8.4.4```.
 
-### PC7 Example if using Ubuntu Linux
+### PC7 **Example** (if using Ubuntu Linux):
 - Open Terminal
 - Edit the NetPlan Configuration File:
 ``` bash
@@ -143,7 +145,7 @@ sudo netplan apply
 ip a
 ```
 
-### PC8 Example if using macOSX
+### PC8 **Example** (if using macOSX)
 - Open Terminal
 - Find the Network Interface Name and identify the network interface you want to configure:
 ``` bash
@@ -151,7 +153,7 @@ networksetup -listallnetworkservices
 ```
 - Set the IP Address and Subnet Mask:
 ``` bash
-sudo networksetup -setmanual <InterfaceName> 192.168.1.67 255.255.255.240
+sudo networksetup -setmanual FasthEthernet0 192.168.1.67 255.255.255.240
 ```
 - Set the Default Gateway:
 ``` bash
@@ -159,7 +161,7 @@ sudo route add default 192.168.1.78
 ```
 - Set the DNS Server:
 ``` bash
-sudo networksetup -setdnsservers <InterfaceName> 8.8.8.8
+sudo networksetup -setdnsservers FastEthernet0 8.8.8.8
 ```
 
 ## Verification and Testing
