@@ -1,5 +1,5 @@
 # Project_02: Optimizing Network Subnetting and Configuration for Site Expansion
-Author: [Carl Xymon Verdejo]() </br>
+Author: [Carl Xymon Verdejo](https://hardworking-lion-z4sd3b.mystrikingly.com/) </br>
 Contact: [carl.xymon.verdejo@gmail.com](carl.xymon.verdejo@gmail.com)
 
 # Project Overview
@@ -8,7 +8,7 @@ In this project, we aim to design and configure a small-scale network with multi
 
 ## Network Topology (Pre-Subnetting / After Project_01)
 The initial network topology in Project_01 consisted of two primary sites, Site 1 and Site 2, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments.
-![]()
+![Figure 1: Network Topology](/screenshot/project02-network-topology-initial.png)
 
 ## Objectives
 1. Break up the ```192.168.1.64 /26``` subnet to support as many subnets as possible with at least 8 hosts each.
@@ -18,59 +18,91 @@ The initial network topology in Project_01 consisted of two primary sites, Site 
 
 # Network Design: Subnetting Calculations
 
-![]()
+![Table 1: Subnetting Table](/screenshot/project_02-subnetting-table.png)
 
 # Network Design: Network Topology (After Subnetting)
-After subnetting, the network was expanded to include Site 3. The new topology consists of three primary sites, each connected to the IntRouter, with subnets allocated for efficient IP address management.
+After subnetting, the network was expanded to include Site 3. The new topology consists of three primary sites, each connected to the IntRouter, with subnets allocated for efficient IP address management. Below is a screenshot of the network topology populated with IP Addresses:
+![Figure 2: Network Topology](/screenshot/project02-network-topology.png)
 
-## Site 3 (Subnet 1: ```192.168.1.64/28```)
-- Router R4: ```192.168.1.78/28```
-- Switch S3: ```192.168.1.77/28```
-- PCs: Manually assigned IPs from ```192.168.1.65/28``` to ```192.168.1.76/28```
+## Site 3 (Subnet: 192.168.1.64/28)
+| **Device**    | **IP Address**| CIDR |
+|---------------|---------------|------|
+| **Router R4** | 192.168.1.78  | /28  |
+| **Switch S3** | 192.168.1.77  | /28  |
+| **PC6**       | 192.168.1.65  | /28  |
+| **PC7**       | 192.168.1.66  | /28  |
+| **PC8**       | 192.168.1.67  | /28  |
 
-## Serial Links (Subnet 2: 192.168.1.112/28
-- R4 ↔ IntRouter : ```192.168.1.117/30```↔ ```192.168.1.118/30```
-- R2 ↔ IntRouter : ```192.168.1.121/30```↔ ```192.168.1.122/30```
-- R1 ↔ IntRouter : ```192.168.1.112/30```↔ ```192.168.1.113/30```
+## Serial Links (Subnet: 192.168.1.112/30 - 192.168.1.120/30)
+| **Link**             |   **IP Address**       | **IP Address IntRouter** |
+|----------------------|------------------------|--------------------------|
+| **R4 ↔ IntRouter**   | 192.168.1.117 /30      | 192.168.1.118 /30        |
+| **R2 ↔ IntRouter**   | 192.168.1.121 /30      | 192.168.1.122 /30        |
+| **R1 ↔ IntRouter**   | 192.168.1.112 /30      | 192.168.1.113 /30        |
 
 ## Device Configuration
-### Router (R1) Configuration Example:
-``` plaintext
-Router>enable
-Router#configure terminal
-Router(config)#hostname R1
-Router(config)#interface GigabitEthernet 0/0/0
-Router(config-if)#no shutdown
-Router(config-if)#ip address 192.168.1.62 255.255.255.192
-Router(config-if)#exit
-Router(config)#end
-Router#copy running-config startup-config
-Router#ping 192.168.1.62
-```
-![]()
+### Router (R1) Serial Configuration Example:
+- Assign ```192.168.1.113``` ```255.255.255.252``` to R1 Serial 0/1/0 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/1/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 3: R1 Config - Serial 0/1/0](/screenshot/R1-config-serial.png)
 
-### Switch (S1) Configuration Example:
-``` plaintext
-Switch>enable
-Switch#configure terminal
-Switch(config)#hostname S1
-S1(config)#ip default-gateway 192.168.1.62
-S1(config)#interface vlan 1
-S1(config-if)#no shutdown
-S1(config-if)#ip address 192.168.1.61 255.255.255.192
-S1(config-if)#exit
-S1(config)#end
-S1#copy running-config startup-config
-S1#ping 192.168.1.62
-```
-![]()
+### Router (R2) Serial Configuration Example:
+- Assign ```192.168.1.121``` ```255.255.255.252``` to R2 Serial 0/1/0 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/1/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 4: R2 Config - Serial 0/1/0](/screenshot/R2-config-serial.png)
+
+### Router (R4) Serial Configuration Example:
+- Assign ```192.168.1.117``` ```255.255.255.252``` to R4 Serial 0/1/0 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/1/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 5: R4 Config - Serial 0/1/0](/screenshot/R4-config-serial.png)
+
+### IntRouter ↔ R1 Serial Configuration Example:
+- Assign ```192.168.1.114``` ```255.255.255.252``` to R1 Serial 0/1/0 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/1/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 6: IntRouter-R1 - Serial 0/1/0](/screenshot/IntRouter-config-serial-r1.png)
+
+### IntRouter ↔ R2 Serial Configuration Example:
+- Assign ```192.168.1.122``` ```255.255.255.252``` to R1 Serial 0/1/1 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/1/1 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 7: IntRouter-R2 - Serial 0/1/1](/screenshot/IntRouter-config-serial-r2.png)
+
+### IntRouter ↔ R4 Serial Configuration Example:
+- Assign ```192.168.1.118``` ```255.255.255.252``` to R1 Serial 0/2/0 interface
+- Bring up the interface: ```no shutdown```
+- Check Serial 0/2/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 8: IntRouter-R4 Config - Serial 0/2/0](/screenshot/IntRouter-config-serial-r4.png)
+
+### R4 ↔ S3 GigabitEthernet Configuration Example:
+- Assign ```192.168.1.78``` ```255.255.255.240``` to R4 GigabitEthernet 0/0/0 interface
+- Bring up the interface: ```no shutdown```
+- Check GigabitEthernet 0/0/0 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 9: R4↔S3 Config - GigabitEthernet 0/0/0](/screenshot/R4-config-r4-s3.png)
+
+### S3 Vlan1 Configuration Example:
+- Assign ```192.168.1.77``` ```255.255.255.240``` to S3 Vlan1 interface
+- Bring up the interface: ```no shutdown```
+- Check Vlan1 is up: ```show ip interface brief```
+- copy vRAM into nvRAM: ```copy running-config startup-config```
+![Figure 10: S3 Config - Vlan1](/screenshot/S3-config-vlan1.png)
 
 ### Manually Configuring IPs for PCs
-| PC   | IP Address     | Subnet Mask        | Default Gateway |
-|------|----------------|--------------------|-----------------|
-| PC6  | 192.168.1.65   | 255.255.255.240    | 192.168.1.78    |
-| PC7  | 192.168.1.66   | 255.255.255.240    | 192.168.1.78    |
-| PC8  | 192.168.1.67   | 255.255.255.240    | 192.168.1.78    |
+| PC       | IP Address     | Subnet Mask        | Default Gateway |
+|----------|----------------|--------------------|-----------------|
+| **PC6**  | 192.168.1.65   | 255.255.255.240    | 192.168.1.78    |
+| **PC7**  | 192.168.1.66   | 255.255.255.240    | 192.168.1.78    |
+| **PC8**  | 192.168.1.67   | 255.255.255.240    | 192.168.1.78    |
 
 ## Verification and Testing
 To verify the network configuration, we conducted several tests:
@@ -78,9 +110,11 @@ To verify the network configuration, we conducted several tests:
 ### Ping Tests:
 - PCs were able to ping their default gateways and other devices within their subnet.
 - PCs successfully pinged external IP addresses (e.g., 8.8.8.8).
+![]()
 
 ### Browser Tests:
 - PCs accessed websites like [cisco.com](cisco.com) and [facebook.com](facebook.com) to confirm internet connectivity.
+![]()
 
 ## Results
 The ```192.168.1.64 /26``` subnet was successfully divided into smaller subnets, maximizing the number of subnets with at least 8 hosts each. This approach allowed for efficient IP address allocation and accommodated additional devices within the network.
