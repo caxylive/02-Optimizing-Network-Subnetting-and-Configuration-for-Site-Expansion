@@ -115,7 +115,8 @@ netsh interface ipv4 set address name="FastEthernet0" gateway=192.168.1.78
 netsh interface ipv4 set dns name="FastEthernet0" static <DNS Server IP>
 ```
 
-### PC7 Example : if using Linux
+### PC7 Example if using Ubuntu Linux
+- Open Terminal
 - Edit the NetPlan Configuration File:
 ``` bash
 sudo nano /etc/netplan/01-netcfg.yaml
@@ -144,6 +145,7 @@ ip a
 ```
 
 ### PC8 Example if using macOSX
+- Open Terminal
 - Find the Network Interface Name and identify the network interface you want to configure:
 ``` bash
 networksetup -listallnetworkservices
