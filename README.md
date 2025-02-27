@@ -104,6 +104,63 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 | **PC7**  | 192.168.1.66   | 255.255.255.240 | 192.168.1.78    |
 | **PC8**  | 192.168.1.67   | 255.255.255.240 | 192.168.1.78    |
 
+### PC6 Example : Windows
+- Please note that cmd in Packet Tracer is limited and does not reflect the real-world cmd commands
+- Also the GUI config in Packet Tracer is very different from the real-worl GUI especially in Windows 11, Linux, and macOSX
+- Refer to each Operating System's way of configuring the Network Interface
+- The commands below **will NOT work** in Packet Tracer but will work on Windows 11 (real-world):
+``` cmd
+netsh interface ipv4 set address name="FastEthernet0" static 192.168.1.65 255.255.255.240
+netsh interface ipv4 set address name="FastEthernet0" gateway=192.168.1.78
+netsh interface ipv4 set dns name="FastEthernet0" static <DNS Server IP>
+```
+
+### PC7 Example : if using Linux
+- Edit the NetPlan Configuration File:
+``` bash
+sudo nano /etc/netplan/01-netcfg.yaml
+```
+- Add the Network Configuration:
+``` Yaml
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses:
+        - 192.168.1.66/28
+      gateway4: 192.168.1.78
+      nameservers:
+        addresses:
+          - 8.8.8.8
+```
+- Apply the Configuration:
+``` bash
+sudo netplan apply
+```
+- Verify the configuration:
+``` bash
+ip a
+```
+
+### PC8 Example if using macOSX
+- Find the Network Interface Name and identify the network interface you want to configure:
+``` bash
+networksetup -listallnetworkservices
+```
+- Set the IP Address and Subnet Mask:
+``` bash
+sudo networksetup -setmanual <InterfaceName> 192.168.1.67 255.255.255.240
+```
+- Set the Default Gateway:
+``` bash
+sudo route add default 192.168.1.78
+```
+- Set the DNS Server:
+``` bash
+sudo networksetup -setdnsservers <InterfaceName> 8.8.8.8
+```
+
 ## Verification and Testing
 To verify the network configuration, we conducted several tests:
 
@@ -144,6 +201,10 @@ The current setup lacks redundancy mechanisms such as HSRP, VRRP, or load balanc
 
 ### 3. Minimal Security Measures
 Security configurations like firewall rules and access control lists (ACLs) were not implemented in this project.
+
+### 4. Limited ```cmd``` and ```terminal``` Commands
+Commands used for Windows PowerShell, Linux Terminal, and macOSX terminal will probably not work in Packet Tracer. Please practice using the real-world terminal. For Packet Tracer, just use their GUI when possible. 
+I provided different examples from different Operating Systems (under the Device Configuration section) on how to configure network settings.
 
 ## Future Improvements and Optimization
 ### 1. Implementing Redundancy and Failover Mechanisms
