@@ -4,10 +4,10 @@ Contact: [carl.xymon.verdejo@gmail.com](carl.xymon.verdejo@gmail.com)
 
 # Project Overview
 ## Background
-In this project, we aim to design and configure a small-scale network with multiple subnets and internet connectivity using Cisco Packet Tracer. Building upon the previous project ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)), we will extend and conserve IP addresses for network expansion in Project_02.
+The aim of this project is to **extend** a previously configured small-scale network with multiple subnets and internet connectivity using Cisco Packet Tracer. Building upon the previous project ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)), we will extend and conserve IP addresses for network expansion in Project_02.
 
 ## Network Topology (Pre-Subnetting)
-The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)) consisted of two primary sites, Site_01 and Site_02, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments.
+The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-01-Subnetting-Network-Configuration-and-Management)) consisted of two primary sites, Site_01 and Site_02, connected to an intermediary router (IntRouter) for internet access. Subnetting was performed on the ```192.168.1.0 /24``` network to allocate IP addresses efficiently for various network segments. In project_02, Site_03 along with a serial link to IntRouter was added which will warrant additional configuration.
 ![Figure 1: Network Topology](/screenshot/project_02-network-topology-initial.png)
 
 ## Objectives
@@ -167,7 +167,7 @@ sudo networksetup -setdnsservers FastEthernet0 8.8.8.8
 ```
 
 ## Verification and Testing
-To verify the network configuration, we conducted several tests:
+To verify the network configuration, several tests were conducted:
 
 ### Ping Tests:
 - PCs were able to ping their default gateways and other devices within their subnet.
