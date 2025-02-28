@@ -32,11 +32,12 @@ After subnetting, the network was expanded to include Site_03. The new topology 
 ## Site_03 (Subnet: 192.168.1.64/28)
 | **Device**    | **IP Address**| CIDR | Interface        | ID    |
 |---------------|---------------|------|------------------|-------|
-| **Router R4** | 192.168.1.78  | /28  | GigabitEthernet  | 0/0/0 |
-| **Switch S3** | 192.168.1.77  | /28  | Vlan             | 1     |
 | **PC6**       | 192.168.1.65  | /28  | FastEthernet     | 0     |
 | **PC7**       | 192.168.1.66  | /28  | FastEthernet     | 0     |
 | **PC8**       | 192.168.1.67  | /28  | FastEthernet     | 0     |
+| **Switch S3** | 192.168.1.77  | /28  | Vlan             | 1     |
+| **Router R4** | 192.168.1.78  | /28  | GigabitEthernet  | 0/0/0 |
+| **Broadcast** | 192.168.1.79  | /28  |                  |       |
 
 ## Serial Links (Subnet: 192.168.1.112/30 - 192.168.1.120/30)
 | **Link**             |**Network**        |**Router IP Address**   | **IP Address IntRouter** | **Directed Broadcast Address**|
