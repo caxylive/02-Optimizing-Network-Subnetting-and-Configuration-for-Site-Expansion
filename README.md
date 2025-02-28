@@ -13,7 +13,13 @@ The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-0
 ## Objectives
 1. Break up the ```192.168.1.64 /26``` subnet to support as many subnets as possible with at least 8 hosts each.
 2. Allocate the first new subnet to Site_03 and manually configure all devices in this subnet.
-3. Subnet the ```192.168.1.112 /28``` subnet obtained from ```192.168.1.64/26``` with ```/30``` masks for serial links.
+3. Subnet the last network obtained from ```192.168.1.64/26``` with ```/30``` masks for serial links.
+  - The subnets obtained from subnetting ```192.168.1.64/24``` are:
+    - ```192.168.1.64 /28```
+    - ```192.168.1.80 /28```
+    - ```192.168.1.96 /28```
+    - ```192.168.1.112 /28``` --> This is the last subnet. Therefore, this will be subnetted using /30 mask.
+  - Take note that ```192.168.1.128 /28``` already belongs to the next block and is no longer part of the ```192.168.1.64/24``` block.
 4. Verify network connectivity and internet access for all PCs.
 
 # Network Design: Subnetting Calculations
