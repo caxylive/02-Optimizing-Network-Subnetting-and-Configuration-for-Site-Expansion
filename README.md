@@ -48,7 +48,7 @@ After subnetting, the network was expanded to include Site_03. The new topology 
 
 
 # Device Configuration
-##Router (R1) Serial Configuration Example
+## Router (R1) Serial Configuration Example
 - Assign ```192.168.1.113``` ```255.255.255.252``` to R1 Serial 0/1/0 interface
 - Bring up the interface: ```no shutdown```
 - Check Serial 0/1/0 is up: ```show ip interface brief```
@@ -104,7 +104,7 @@ After subnetting, the network was expanded to include Site_03. The new topology 
 - copy vRAM into nvRAM: ```copy running-config startup-config```
 ![Figure 10: S3 Config - Vlan1](/screenshot/S3-config-vlan1.png)
 ### PS:
-- Not shown in the screenshot above, but we need to set S3's default gateway to R4: ```ip default-gateway 192.168.1.78```
+- Not shown in the screenshot above but S3's default gateway needs to be set to R4: ```ip default-gateway 192.168.1.78```
 
 ## Manually Configuring IPs for PCs
 | PC       | IP Address     | Subnet Mask     | Default Gateway |
@@ -124,7 +124,7 @@ netsh interface ipv4 set address name="FastEthernet0" gateway=192.168.1.78
 netsh interface ipv4 set dns name="FastEthernet0" static 8.8.8.8
 ```
 #### Note:
--```8.8.8.8``` is Google's Domain Name System server. Another one is ```8.8.4.4```.
+-```8.8.8.8``` is Google's Domain Name System server. Another well-known Google DNS is ```8.8.4.4```.
 
 ### PC7 **Example** (if using Ubuntu Linux):
 - Open Terminal
