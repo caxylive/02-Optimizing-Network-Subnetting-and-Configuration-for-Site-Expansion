@@ -12,7 +12,7 @@ The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-0
 
 ## Objectives
 1. Break up the ```192.168.1.64 /26``` subnet to support as many subnets as possible with at least 8 hosts each.
-2. Allocate the first new subnet to Site 3 and manually configure all devices in this subnet.
+2. Allocate the first new subnet to Site_03 and manually configure all devices in this subnet.
 3. Subnet the ```192.168.1.112 /28``` subnet obtained from ```192.168.1.64/26``` with ```/30``` masks for serial links.
 4. Verify network connectivity and internet access for all PCs.
 
@@ -20,10 +20,10 @@ The initial network topology in ([Project_01](https://github.com/caxylive/CCNA-0
 ![Table 1: Subnetting Table](/screenshot/project_02-subnetting-table.png)
 
 # Network Design: Network Topology (After Subnetting)
-After subnetting, the network was expanded to include Site 3. The new topology consists of three primary sites, each connected to the IntRouter, with subnets allocated for efficient IP address management. Below is a screenshot of the network topology populated with IP Addresses:
-![Figure 2: Network Topology](/screenshot/project02-network-topology.png)
+After subnetting, the network was expanded to include Site_03. The new topology consists of three primary sites, each connected to the IntRouter, with subnets allocated for efficient IP address management. Below is a screenshot of the network topology populated with IP Addresses:
+![Figure 2: Network Topology](/screenshot/project_02-network-topology.png)
 
-## Site 3 (Subnet: 192.168.1.64/28)
+## Site_03 (Subnet: 192.168.1.64/28)
 | **Device**    | **IP Address**| CIDR |
 |---------------|---------------|------|
 | **Router R4** | 192.168.1.78  | /28  |
@@ -95,6 +95,8 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 - Check Vlan1 is up: ```show ip interface brief```
 - copy vRAM into nvRAM: ```copy running-config startup-config```
 ![Figure 10: S3 Config - Vlan1](/screenshot/S3-config-vlan1.png)
+#### PS:
+- Not shown in the screenshot above, but we need to set S3's default gateway to R4: ```ip default-gateway 192.168.1.78```
 
 ### Manually Configuring IPs for PCs
 | PC       | IP Address     | Subnet Mask     | Default Gateway |
@@ -105,9 +107,9 @@ After subnetting, the network was expanded to include Site 3. The new topology c
 
 ### PC6 Example (if using Windows cmd / PowerShell):
 - Please note that cmd in Packet Tracer is limited and does not reflect the real-world cmd commands
-- Also the GUI config in Packet Tracer is very different from the real-worl GUI especially in Windows 11, Linux, and macOSX
-- Refer to each Operating System's way of configuring the Network Interface
-- The commands below **will NOT work** in Packet Tracer but will work on Windows 11 (real-world):
+- Also the GUI config in Packet Tracer is very different from the real-world GUI especially in Windows 11, Linux, and macOSX
+- Refer to each Operating System's way of configuring their Network Interfaces
+- The commands below **will NOT work** in Packet Tracer but will work on Windows 11 (real-world vs simulation):
 ``` cmd
 netsh interface ipv4 set address name="FastEthernet0" static 192.168.1.65 255.255.255.240
 netsh interface ipv4 set address name="FastEthernet0" gateway=192.168.1.78
@@ -175,8 +177,8 @@ To verify the network configuration, we conducted several tests:
 ![Figure 12: Pinging Internal Devices](/screenshot/PC6-ping.png)
 
 #### PS:
-- Connectivity tests are not limited to the devices mentioned above.
-- Please test every single device one-by-one.
+- Connectivity tests are not limited to the screenshots shown above.
+- Please test every single device on your network one-by-one.
 
 ### Browser Tests:
 - Just type the URL (Uniform Resource Locator) into a browser's address bar.
@@ -188,7 +190,7 @@ To verify the network configuration, we conducted several tests:
 ## Results
 The ```192.168.1.64 /26``` subnet was successfully divided into smaller subnets, maximizing the number of subnets with at least 8 hosts each. This approach allowed for efficient IP address allocation and accommodated additional devices within the network.
 
-The first new subnet ```192.168.1.64 /28``` was allocated to Site 3. All devices in Site 3, including Router R4, Switch S3, and PCs (PC6, PC7, and PC8), were manually configured with appropriate IP addresses. This ensured that Site 3 was fully integrated into the network.
+The first new subnet ```192.168.1.64 /28``` was allocated to Site_03. All devices in Site_03, including Router R4, Switch S3, and PCs (PC6, PC7, and PC8), were manually configured with appropriate IP addresses. This ensured that Site_03 was fully integrated into the network.
 
 The last new subnet from ```192.168.1.64 /26``` was further divided into ```/30``` subnets for serial links. This provided efficient IP address allocation for the serial links connecting R4, R2, and R1 to the IntRouter. Each serial link was configured with the correct IP addresses, ensuring seamless connectivity.
 
