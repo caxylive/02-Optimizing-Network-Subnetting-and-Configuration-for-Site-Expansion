@@ -30,20 +30,21 @@ After subnetting, the network was expanded to include Site_03. The new topology 
 ![Figure 2: Network Topology](/screenshot/project_02-network-topology.png)
 
 ## Site_03 (Subnet: 192.168.1.64/28)
-| **Device**    | **IP Address**| CIDR |
-|---------------|---------------|------|
-| **Router R4** | 192.168.1.78  | /28  |
-| **Switch S3** | 192.168.1.77  | /28  |
-| **PC6**       | 192.168.1.65  | /28  |
-| **PC7**       | 192.168.1.66  | /28  |
-| **PC8**       | 192.168.1.67  | /28  |
+| **Device**    | **IP Address**| CIDR | Interface        | ID    |
+|---------------|---------------|------|------------------|-------|
+| **Router R4** | 192.168.1.78  | /28  | GigabitEthernet  | 0/0/0 |
+| **Switch S3** | 192.168.1.77  | /28  | Vlan             | 1     |
+| **PC6**       | 192.168.1.65  | /28  | FastEthernet     | 0     |
+| **PC7**       | 192.168.1.66  | /28  | FastEthernet     | 0     |
+| **PC8**       | 192.168.1.67  | /28  | FastEthernet     | 0     |
 
 ## Serial Links (Subnet: 192.168.1.112/30 - 192.168.1.120/30)
-| **Link**             |   **IP Address**       | **IP Address IntRouter** |
-|----------------------|------------------------|--------------------------|
-| **R4 ↔ IntRouter**   | 192.168.1.117 /30      | 192.168.1.118 /30        |
-| **R2 ↔ IntRouter**   | 192.168.1.121 /30      | 192.168.1.122 /30        |
-| **R1 ↔ IntRouter**   | 192.168.1.112 /30      | 192.168.1.113 /30        |
+| **Link**             |**Network**        |**Router IP Address**   | **IP Address IntRouter** | **Directed Broadcast Address**|
+|----------------------|-------------------|------------------------|--------------------------|-------------------------------|
+| **R1 ↔ IntRouter**   | 192.168.1.112 /30 | 192.168.1.113 /30      | 192.168.1.114 /30        | 192.168.1.115 /30             |
+| **R4 ↔ IntRouter**   | 192.168.1.116 /30 | 192.168.1.117 /30      | 192.168.1.118 /30        | 192.168.1.119 /30             |
+| **R2 ↔ IntRouter**   | 192.168.1.120 /30 | 192.168.1.121 /30      | 192.168.1.122 /30        | 192.168.1.123 /30             |
+
 
 ## Device Configuration
 ### Router (R1) Serial Configuration Example:
